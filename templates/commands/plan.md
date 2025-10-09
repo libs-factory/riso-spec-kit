@@ -60,7 +60,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Phase 1: Generate data-model.md, contracts/, quickstart.md
    - Phase 1: Update agent context by running the agent script
    - Re-evaluate Constitution Check post-design
-   - **RisoTech**: Suggest running `/speckit.constitution-applying` for detailed validation
+   - **RisoTech**: Suggest running `/speckit.constitution-validation` for detailed validation
    - **If LARGE/EPIC**: Add note suggesting `/speckit.epic` for story decomposition
 
 5. **Stop and report**: Command ends after Phase 2 planning. Report:

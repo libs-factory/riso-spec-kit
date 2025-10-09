@@ -54,7 +54,7 @@ RisoTech Integration enhances the Specify CLI with:
 │                    Command Templates                         │
 │   /speckit.specify  /speckit.plan  /speckit.epic           │
 │   /speckit.tasks    /speckit.implement  /speckit.story     │
-│   /speckit.status   /speckit.constitution-applying         │
+│   /speckit.status   /speckit.constitution-validation         │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -372,7 +372,7 @@ scripts:
    - `/speckit.epic`, `/speckit.story`, `/speckit.status`
 
 3. **Constitution Commands**:
-   - `/speckit.constitution-applying`, `/speckit.constitution-upgrade`
+   - `/speckit.constitution-validation`, `/speckit.constitution-upgrade`
 
 ---
 

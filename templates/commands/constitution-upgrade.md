@@ -257,11 +257,11 @@ Provide comprehensive summary:
 ## Next Steps
 1. Review the upgraded constitution at `/memory/constitution.md`
 2. Enable RisoTech mode: `export SPECIFY_RISOTECH_MODE=true`
-3. Run `/speckit.constitution-applying` to validate existing artifacts
+3. Run `/speckit.constitution-validation` to validate existing artifacts
 4. Consider using `/speckit.clarify` for enhanced clarification workflows
 
 ## New Commands Available
-- `/speckit.constitution-applying` - Validate artifacts against constitution
+- `/speckit.constitution-validation` - Validate artifacts against constitution
 - `/speckit.constitution-upgrade` - This command (for future migrations)
 
 ## Files Modified
@@ -282,7 +282,7 @@ The upgrade process:
 - **Increments** version appropriately (MAJOR)
 
 Existing workflows continue to work but gain:
-- Tiered validation in `/speckit.constitution-applying`
+- Tiered validation in `/speckit.constitution-validation`
 - Better guidance on which rules are flexible
 - Clearer prioritization for compliance
 

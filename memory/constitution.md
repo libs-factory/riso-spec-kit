@@ -11,7 +11,7 @@ organize principles into three tiers for better prioritization:
 - FLEXIBLE: Guidelines that can be adapted based on context
 
 Use /speckit.constitution-upgrade to convert existing constitution to tiered format.
-Use /speckit.constitution-applying to validate artifacts against constitution.
+Use /speckit.constitution-validation to validate artifacts against constitution.
 -->
 
 ## CORE Principles

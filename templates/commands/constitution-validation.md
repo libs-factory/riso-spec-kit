@@ -1,5 +1,5 @@
 ---
-description: Apply constitution rules to validate specification, plan, or task artifacts against the established governance principles.
+description: Validate specification, plan, or task artifacts against the established constitution governance principles.
 ---
 
 ## User Input
@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Outline
 
-You are applying the project constitution to validate development artifacts. This command ensures that specifications, plans, and tasks comply with established governance principles.
+You are validating development artifacts against the project constitution. This command ensures that specifications, plans, and tasks comply with established governance principles.
 
 Follow this execution flow:
 
@@ -173,16 +173,16 @@ When `SPECIFY_RISOTECH_MODE=true` or `SPECIFY_TIERED_CONSTITUTION=true`:
 
 ```bash
 # Validate current feature's spec against constitution
-/speckit.constitution-applying
+/speckit.constitution-validation
 
 # Validate specific artifact
-/speckit.constitution-applying Check the plan for security compliance
+/speckit.constitution-validation Check the plan for security compliance
 
 # Validate all artifacts for a feature
-/speckit.constitution-applying Validate all artifacts for feature 001-user-auth
+/speckit.constitution-validation Validate all artifacts for feature 001-user-auth
 
 # Quick check for blockers only
-/speckit.constitution-applying Check for blocker violations only
+/speckit.constitution-validation Check for blocker violations only
 ```
 
 ## Integration Points

@@ -92,7 +92,7 @@ This is a **MINOR** version bump introducing significant new features while main
   - **NEW**: `templates/risotech/progress-report.md` - Progress report template
 
 - **New Commands**:
-  - `templates/commands/constitution-applying.md` - Validate artifacts against constitution
+  - `templates/commands/constitution-validation.md` - Validate artifacts against constitution
   - `templates/commands/constitution-upgrade.md` - Upgrade to tiered constitution
   - **NEW**: `templates/commands/epic.md` - EPIC decomposition workflow
   - **NEW**: `templates/commands/story.md` - Story management (list, status, progress)
@@ -192,7 +192,7 @@ export SPECIFY_VALIDATION_SUBTASKS=true
 ```
 
 New commands available:
-- `/speckit.constitution-applying` - Validate artifacts
+- `/speckit.constitution-validation` - Validate artifacts
 - `/speckit.constitution-upgrade` - Upgrade to tiered constitution
 
 ## [0.0.18] - 2025-10-06
