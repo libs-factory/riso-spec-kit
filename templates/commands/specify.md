@@ -143,7 +143,31 @@ Given that feature description, do this:
    
    d. **Update Checklist**: After each validation iteration, update the checklist file with current pass/fail status
 
-6. Report completion with branch name, spec file path, checklist results, and readiness for the next phase (`/speckit.clarify` or `/speckit.plan`).
+6. **Constitution Validation** (if RisoTech mode enabled):
+
+   If `SPECIFY_RISOTECH_MODE=true` or `SPECIFY_TIERED_CONSTITUTION=true`:
+
+   a. Check if project has a constitution at `/memory/constitution.md`
+
+   b. If constitution exists:
+      - Run preliminary validation of spec against constitution
+      - Check if spec violates any CORE rules
+      - Flag potential conflicts with HIGH-PRIORITY rules
+      - Document in checklist any constitution-related concerns
+
+   c. Inform user they can run `/speckit.constitution-applying` after specification is complete to perform detailed validation
+
+   d. If critical CORE rule violations detected:
+      - List the violations clearly
+      - Suggest how to align spec with constitution
+      - Wait for user decision: fix now or proceed
+
+7. Report completion with branch name, spec file path, checklist results, and readiness for the next phase.
+
+   **Next Steps**:
+   - Run `/speckit.clarify` for structured clarification (recommended if spec has ambiguities)
+   - Run `/speckit.constitution-applying` to validate against project constitution (RisoTech)
+   - Run `/speckit.plan` to create technical implementation plan
 
 **NOTE:** The script creates and checks out the new branch and initializes the spec file before writing.
 

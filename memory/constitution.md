@@ -1,32 +1,115 @@
 # [PROJECT_NAME] Constitution
 <!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
 
-## Core Principles
+<!--
+RisoTech Tiered Constitution:
+If using RisoTech mode (SPECIFY_RISOTECH_MODE=true or SPECIFY_TIERED_CONSTITUTION=true),
+organize principles into three tiers for better prioritization:
+
+- CORE: Non-negotiable rules (security, testing, compliance)
+- HIGH-PRIORITY: Strong recommendations requiring documented justification to deviate
+- FLEXIBLE: Guidelines that can be adapted based on context
+
+Use /speckit.constitution-upgrade to convert existing constitution to tiered format.
+Use /speckit.constitution-applying to validate artifacts against constitution.
+-->
+
+## CORE Principles
+<!-- CORE rules are non-negotiable and must be followed in all circumstances -->
 
 ### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
+**Tier:** `core`
+<!-- Example: I. Test-First Development (NON-NEGOTIABLE) -->
+
 [PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
-
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
-
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
 <!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
 
+**Rationale:** [WHY_IS_THIS_CORE]
+<!-- Example: Testing before implementation prevents regressions and ensures requirements are met -->
+
+**Examples:**
+- [EXAMPLE_1]
+- [EXAMPLE_2]
+<!-- Example: Write unit tests before implementing features; All tests must pass before merging -->
+
+---
+
+### [PRINCIPLE_2_NAME]
+**Tier:** `core`
+<!-- Example: II. Security First -->
+
+[PRINCIPLE_2_DESCRIPTION]
+<!-- Example: Security must be considered at every stage; Never commit secrets; Validate all inputs -->
+
+**Rationale:** [WHY_IS_THIS_CORE]
+
+**Examples:**
+- [EXAMPLE_1]
+- [EXAMPLE_2]
+
+---
+
+### [PRINCIPLE_3_NAME]
+**Tier:** `core`
+<!-- Example: III. Data Privacy & Compliance -->
+
+[PRINCIPLE_3_DESCRIPTION]
+
+**Rationale:** [WHY_IS_THIS_CORE]
+
+**Examples:**
+- [EXAMPLE_1]
+- [EXAMPLE_2]
+
+---
+
+## HIGH-PRIORITY Principles
+<!-- HIGH-PRIORITY rules should be followed unless there's a strong, documented reason to deviate -->
+
 ### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
+**Tier:** `high-priority`
+<!-- Example: IV. Code Review Required -->
+
 [PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+
+**Rationale:** [WHY_IS_THIS_HIGH_PRIORITY]
+
+**Examples:**
+- [EXAMPLE_1]
+- [EXAMPLE_2]
+
+---
 
 ### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
+**Tier:** `high-priority`
+<!-- Example: V. Performance Standards -->
+
 [PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+
+**Rationale:** [WHY_IS_THIS_HIGH_PRIORITY]
+
+**Examples:**
+- [EXAMPLE_1]
+- [EXAMPLE_2]
+
+---
+
+## FLEXIBLE Guidelines
+<!-- FLEXIBLE rules are guidelines that can be adapted based on context -->
+
+### [PRINCIPLE_6_NAME]
+**Tier:** `flexible`
+<!-- Example: VI. Technology Stack Preferences -->
+
+[PRINCIPLE_6_DESCRIPTION]
+
+**Rationale:** [WHY_IS_THIS_FLEXIBLE]
+
+**Examples:**
+- [EXAMPLE_1]
+- [EXAMPLE_2]
+
+---
 
 ## [SECTION_2_NAME]
 <!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->

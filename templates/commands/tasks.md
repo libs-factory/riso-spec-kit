@@ -17,12 +17,74 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 1. **Setup**: Run `{SCRIPT}` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute.
 
-2. **Load design documents**: Read from FEATURE_DIR:
+2. **Check for EPIC decomposition** (RisoTech Enhancement):
+
+   If `SPECIFY_RISOTECH_MODE=true` or `SPECIFY_EPIC_DECOMPOSITION=true`:
+
+   a. Check if `FEATURE_DIR/epic-breakdown.md` exists
+
+   b. **If epic-breakdown.md EXISTS**:
+      - Load epic-breakdown.md
+      - Extract user stories (US-001, US-002, etc.)
+      - Parse story priorities, dependencies, task estimates
+      - Check for `--story US-###` argument in user input
+
+      **If `--story US-###` provided:**
+      - Generate tasks for ONLY that specific user story
+      - Load story details from epic-breakdown.md or stories/US-###.md
+      - Skip to step 3 with single-story context
+
+      **If no `--story` argument:**
+      - Generate tasks for ALL stories in epic-breakdown.md
+      - Organize by story phases (as described below)
+      - Continue to step 3 with multi-story context
+
+   c. **If epic-breakdown.md DOES NOT EXIST**:
+      - Proceed with standard task generation (no EPIC decomposition)
+      - Continue to step 3
+
+3. **Load design documents**: Read from FEATURE_DIR:
    - **Required**: plan.md (tech stack, libraries, structure), spec.md (user stories with priorities)
    - **Optional**: data-model.md (entities), contracts/ (API endpoints), research.md (decisions), quickstart.md (test scenarios)
+   - **If EPIC mode**: epic-breakdown.md (story decomposition)
    - Note: Not all projects have all documents. Generate tasks based on what's available.
 
-3. **Execute task generation workflow** (follow the template structure):
+4. **Execute task generation workflow** (follow the template structure):
+
+   **IF EPIC MODE (epic-breakdown.md exists):**
+
+   a. **Single-story mode** (`--story US-###` provided):
+      - Load story from epic-breakdown.md or stories/US-###.md
+      - Extract story details: title, description, acceptance criteria, dependencies
+      - Check dependencies are complete (from backlog.json if exists)
+      - Generate tasks for ONLY this story:
+        * Story-specific setup (if needed)
+        * Tests for this story (if requested)
+        * Implementation tasks for this story
+        * Story-specific integration
+        * Story validation checklist
+      - Number tasks: T001, T002... (scoped to this story)
+      - Skip other stories entirely
+
+   b. **Multi-story mode** (no `--story` argument):
+      - Load all stories from epic-breakdown.md
+      - Sort by priority (P1, P2, P3) and dependencies
+      - Generate tasks organized by story phases:
+        * Phase 1: Setup (shared infrastructure)
+        * Phase 2: Foundational (blocking prerequisites)
+        * Phase 3+: One phase per user story (P1 stories first)
+        * Final Phase: Polish & integration
+      - Each story phase includes:
+        * Story goal and acceptance criteria
+        * Independent test scenario
+        * Tests (if requested)
+        * Implementation tasks
+        * Story validation (if RisoTech validation enabled)
+        * Checkpoint after story complete
+      - Number tasks sequentially across all stories
+
+   **IF STANDARD MODE (no EPIC decomposition):**
+
    - Load plan.md and extract tech stack, libraries, project structure
    - **Load spec.md and extract user stories with their priorities (P1, P2, P3, etc.)**
    - If data-model.md exists: Extract entities → map to user stories
@@ -38,6 +100,15 @@ You **MUST** consider the user input before proceeding (if not empty).
        - If tests requested: Include tests specific to that story
      - Polish/Integration tasks (cross-cutting concerns)
    - **Tests are OPTIONAL**: Only generate test tasks if explicitly requested in the feature spec or user asks for TDD approach
+   - **RisoTech Enhancement - Validation Sub-tasks**: If `SPECIFY_VALIDATION_SUBTASKS=true`:
+     * Auto-generate validation checklist for EACH implementation task:
+       - Unit tests (if code changes)
+       - Integration tests (if API/database)
+       - Manual checks (if UI/UX)
+       - Code review (always)
+       - Documentation (if new feature)
+     * Add validation sub-task section to each task
+     * Validate tasks don't proceed until sub-tasks complete
    - Apply task rules:
      - Different files = mark [P] for parallel
      - Same file = sequential (no [P])
@@ -46,12 +117,22 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Generate dependency graph showing user story completion order
    - Create parallel execution examples per user story
    - Validate task completeness (each user story has all needed tasks, independently testable)
+   - **EPIC Integration**: If epic-breakdown.md exists, reference story IDs and follow story-based organization
 
-4. **Generate tasks.md**: Use `.specify/templates/tasks-template.md` as structure, fill with:
+5. **Generate tasks.md**: Use `.specify/templates/tasks-template.md` as structure, fill with:
+
+   **IF SINGLE-STORY MODE** (`--story US-###` provided in EPIC mode):
+   - Feature name + story title header
+   - Story context (ID, goal, acceptance criteria, dependencies)
+   - Story-specific tasks only (setup, tests, implementation, validation)
+   - Numbered tasks scoped to this story (T001, T002...)
+   - Story completion checklist
+
+   **IF MULTI-STORY MODE** (standard or EPIC with all stories):
    - Correct feature name from plan.md
    - Phase 1: Setup tasks (project initialization)
    - Phase 2: Foundational tasks (blocking prerequisites for all user stories)
-   - Phase 3+: One phase per user story (in priority order from spec.md)
+   - Phase 3+: One phase per user story (in priority order from spec.md or epic-breakdown.md)
      - Each phase includes: story goal, independent test criteria, tests (if requested), implementation tasks
      - Clear [Story] labels (US1, US2, US3...) for each task
      - [P] markers for parallelizable tasks within each story
@@ -63,12 +144,31 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Parallel execution examples per story
    - Implementation strategy section (MVP first, incremental delivery)
 
-5. **Report**: Output path to generated tasks.md and summary:
+6. **Update story backlog** (if EPIC mode with backlog.json):
+   - If `FEATURE_DIR/stories/backlog.json` exists:
+     * Load backlog
+     * Update story with tasks.md path reference
+     * Update estimated_tasks count for the story
+     * Set status to READY (if was DRAFT)
+     * Save backlog
+
+7. **Report**: Output path to generated tasks.md and summary:
+
+   **IF SINGLE-STORY MODE:**
+   - Story ID and title
+   - Total task count for this story
+   - Estimated hours for this story
+   - Dependencies status (complete/incomplete)
+   - Ready to implement: Yes/No
+   - Next step: `/speckit.implement --story US-###`
+
+   **IF MULTI-STORY MODE:**
    - Total task count
    - Task count per user story
    - Parallel opportunities identified
    - Independent test criteria for each story
-   - Suggested MVP scope (typically just User Story 1)
+   - Suggested MVP scope (typically just User Story 1 or all P1 stories)
+   - Next step: `/speckit.implement` (all stories) or `/speckit.implement --story US-001` (MVP only)
 
 Context for task generation: {ARGS}
 

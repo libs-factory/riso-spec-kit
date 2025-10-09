@@ -7,6 +7,194 @@ All notable changes to the Specify CLI and templates are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.0] - 2025-10-08
+
+### Added - RisoTech Integration
+
+This is a **MINOR** version bump introducing significant new features while maintaining backward compatibility.
+
+#### Core Modules
+
+- **config.py**: Feature flag system for progressive rollout
+  - `SPECIFY_RISOTECH_MODE` - Master switch for all RisoTech enhancements
+  - `SPECIFY_TIERED_CONSTITUTION` - Tiered constitution framework
+  - `SPECIFY_EPIC_DECOMPOSITION` - EPIC decomposition for large features
+  - `SPECIFY_CLARIFICATION_GATE` - Enhanced clarification workflows
+  - `SPECIFY_VALIDATION_SUBTASKS` - Validation sub-tasks for quality gates
+  - `SPECIFY_MULTISTORY_BACKLOG` - Multi-story backlog management
+
+- **constitution.py**: Tiered constitution management
+  - Three-tier structure: CORE, HIGH-PRIORITY, FLEXIBLE rules
+  - Load/save constitution from markdown
+  - Validate plans against constitution rules
+  - Merge constitutions with conflict resolution
+  - Generate constitution summaries
+  - **NEW**: Constitution preset system with stack-specific templates
+  - **NEW**: `load_preset()` method for quick constitution setup
+  - **NEW**: `list_available_presets()` and `get_preset_description()` helpers
+
+- **epic_analyzer.py**: Large feature decomposition
+  - Analyze feature complexity (SMALL, MEDIUM, LARGE, EPIC)
+  - Decompose EPICs into manageable stories
+  - **NEW**: `decompose_feature_to_stories()` with 4 strategies (roles, functional areas, entities, MVP)
+  - **NEW**: `detect_story_dependencies()` for automatic dependency detection
+  - **NEW**: `apply_dependencies()` for dependency management
+  - Generate story sequences respecting dependencies
+  - Estimate EPIC duration
+  - Load/save EPICs from markdown
+
+- **story_manager.py**: User story tracking and backlog management
+  - **NEW**: `UserStory` dataclass with status tracking (DRAFT/READY/IN_PROGRESS/COMPLETE/BLOCKED)
+  - **NEW**: `StoryBacklog` for story persistence (JSON-based)
+  - **NEW**: `StoryManager` for multi-feature story management
+  - Track story progress with metrics (tasks, hours, test coverage)
+  - Automatic dependency checking and blocking/unblocking
+  - Story velocity calculation
+  - Circular dependency detection
+  - Story status transitions with validation
+
+- **workflow_runner.py**: Workflow orchestration
+  - **NEW**: `WorkflowRunner` for end-to-end workflow management
+  - Detect current workflow stage (SPECIFY/PLAN/TASKS/IMPLEMENT)
+  - Validate prerequisites before stage transitions
+  - Story readiness validation for implementation
+  - Automatic progress tracking and backlog updates
+  - Story completion with auto-unblocking of dependents
+  - Workflow summary generation
+
+- **progress_tracker.py**: Implementation progress tracking
+  - **NEW**: `ProgressTracker` for task-level progress monitoring
+  - Track task status (pending/in_progress/complete/failed)
+  - Phase-by-phase progress calculation
+  - Duration tracking for tasks
+  - Overall progress metrics
+
+- **validation.py**: Validation sub-task generation
+  - Auto-generate validation checks for tasks
+  - Support multiple validation types (unit test, integration test, manual check, code review, documentation, performance)
+  - Track task completion via validation checklists
+  - Generate progress reports
+  - Validate task dependencies
+
+#### Templates
+
+- **RisoTech Constitution Templates**:
+  - `templates/risotech/core.md` - Non-negotiable core rules
+  - `templates/risotech/high-priority.md` - Strong recommendations
+  - `templates/risotech/flexible.md` - Adaptable guidelines
+  - **NEW**: `templates/risotech/constitution-presets/react-typescript.md` - React + TS preset
+  - **NEW**: `templates/risotech/constitution-presets/nextjs-tailwind.md` - Next.js + Tailwind preset
+  - **NEW**: `templates/risotech/constitution-presets/django-postgresql.md` - Django + PostgreSQL preset
+
+- **EPIC & Story Templates**:
+  - **NEW**: `templates/risotech/epic-breakdown.md` - EPIC decomposition template
+  - **NEW**: `templates/risotech/story-template.md` - User story template
+  - **NEW**: `templates/risotech/progress-report.md` - Progress report template
+
+- **New Commands**:
+  - `templates/commands/constitution-applying.md` - Validate artifacts against constitution
+  - `templates/commands/constitution-upgrade.md` - Upgrade to tiered constitution
+  - **NEW**: `templates/commands/epic.md` - EPIC decomposition workflow
+  - **NEW**: `templates/commands/story.md` - Story management (list, status, progress)
+  - **NEW**: `templates/commands/status.md` - Generate progress reports
+
+- **Enhanced Commands**:
+  - **UPDATED**: `templates/commands/specify.md` - Added constitution validation step
+  - **UPDATED**: `templates/commands/plan.md` - Added EPIC complexity analysis
+  - **UPDATED**: `templates/commands/tasks.md` - Added EPIC integration, single-story mode
+  - **UPDATED**: `templates/commands/implement.md` - Added story-scoped implementation, progress tracking
+  - **UPDATED**: `memory/constitution.md` - Enhanced with tier structure
+
+- **Scripts**:
+  - **NEW**: `scripts/bash/epic-breakdown.sh` - EPIC workflow helper
+  - **NEW**: `scripts/bash/story-management.sh` - Story management helper
+
+- **Tasks Index Template**:
+  - `templates/tasks-index-template.md` - Comprehensive task tracking
+
+#### Tests
+
+- Comprehensive test suite with 80%+ coverage goal
+  - `tests/test_config.py` - Config and feature flag tests (8 tests)
+  - `tests/test_constitution.py` - Constitution management tests (12 tests)
+  - `tests/test_epic_analyzer.py` - EPIC decomposition tests (11 tests)
+  - `tests/test_validation.py` - Validation sub-task tests (14 tests)
+  - **NEW**: `tests/test_constitution_presets.py` - Constitution preset tests (13 tests)
+  - **NEW**: `tests/test_story_manager.py` - Story management tests (15 tests)
+  - **NEW**: `tests/test_workflow_runner.py` - Workflow orchestration tests (12 tests)
+
+### Changed
+
+- Bumped version from `0.0.18` to `0.1.0` (MINOR version bump)
+- Updated `pyproject.toml` description to mention RisoTech enhancements
+- Added `dev` optional dependencies for testing (pytest, pytest-cov, pytest-mock)
+- Enhanced `config.py` with workflow settings:
+  - `ENABLE_STORY_TRACKING` - Story-level progress tracking
+  - `ENABLE_PROGRESS_REPORTING` - Automatic progress reports
+  - `AUTO_UPDATE_BACKLOG` - Auto-update backlog on task completion
+  - `TRACK_ACTUAL_HOURS` - Track actual vs estimated hours
+  - `CALCULATE_VELOCITY` - Calculate story/task velocity
+  - `REQUIRE_READY_STATUS` - Require READY status before implementation
+  - `AUTO_UNBLOCK_STORIES` - Auto-unblock stories when dependencies complete
+  - `BLOCK_ON_INCOMPLETE_DEPS` - Auto-block stories with incomplete dependencies
+
+### Features Overview
+
+#### EPIC Decomposition Workflow
+
+For large/complex features (30+ tasks):
+
+```bash
+/speckit.specify "Build user management system"
+/speckit.plan                    # Detects EPIC complexity
+/speckit.epic                    # Decomposes into stories
+/speckit.story --list            # View all stories
+/speckit.tasks --story US-001    # Generate tasks for MVP story
+/speckit.implement --story US-001 # Implement MVP
+/speckit.story US-001 --complete # Mark complete, unblock dependents
+/speckit.story --next            # Get next story
+```
+
+#### Story-by-Story Implementation
+
+Incremental delivery with dependency tracking:
+
+- Implement one story at a time
+- Automatic dependency validation
+- Progress tracking per story
+- Auto-unblocking of dependent stories
+- Velocity calculation for planning
+
+#### Progress Reporting
+
+Comprehensive status monitoring:
+
+```bash
+/speckit.status                  # Quick summary
+/speckit.status --format markdown --save # Detailed report
+/speckit.status --story US-003   # Story-specific status
+/speckit.status --format json    # Machine-readable (CI/CD)
+```
+
+### Migration Guide
+
+Existing users can continue using specify-cli without changes. All RisoTech features are disabled by default.
+
+To enable RisoTech enhancements:
+
+```bash
+# Enable all RisoTech features
+export SPECIFY_RISOTECH_MODE=true
+
+# Or enable specific features
+export SPECIFY_TIERED_CONSTITUTION=true
+export SPECIFY_VALIDATION_SUBTASKS=true
+```
+
+New commands available:
+- `/speckit.constitution-applying` - Validate artifacts
+- `/speckit.constitution-upgrade` - Upgrade to tiered constitution
+
 ## [0.0.18] - 2025-10-06
 
 ### Added

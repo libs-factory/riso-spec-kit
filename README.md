@@ -1,44 +1,3 @@
-<div align="center">
-    <img src="./media/logo_small.webp"/>
-    <h1>🌱 Spec Kit</h1>
-    <h3><em>Build high-quality software faster.</em></h3>
-</div>
-
-<p align="center">
-    <strong>An effort to allow organizations to focus on product scenarios rather than writing undifferentiated code with the help of Spec-Driven Development.</strong>
-</p>
-
-<p align="center">
-    <a href="https://github.com/github/spec-kit/actions/workflows/release.yml"><img src="https://github.com/github/spec-kit/actions/workflows/release.yml/badge.svg" alt="Release"/></a>
-    <a href="https://github.com/github/spec-kit/stargazers"><img src="https://img.shields.io/github/stars/github/spec-kit?style=social" alt="GitHub stars"/></a>
-    <a href="https://github.com/github/spec-kit/blob/main/LICENSE"><img src="https://img.shields.io/github/license/github/spec-kit" alt="License"/></a>
-    <a href="https://github.github.io/spec-kit/"><img src="https://img.shields.io/badge/docs-GitHub_Pages-blue" alt="Documentation"/></a>
-</p>
-
----
-
-## Table of Contents
-
-- [🤔 What is Spec-Driven Development?](#-what-is-spec-driven-development)
-- [⚡ Get started](#-get-started)
-- [📽️ Video Overview](#️-video-overview)
-- [🤖 Supported AI Agents](#-supported-ai-agents)
-- [🔧 Specify CLI Reference](#-specify-cli-reference)
-- [📚 Core philosophy](#-core-philosophy)
-- [🌟 Development phases](#-development-phases)
-- [🎯 Experimental goals](#-experimental-goals)
-- [🔧 Prerequisites](#-prerequisites)
-- [📖 Learn more](#-learn-more)
-- [📋 Detailed process](#-detailed-process)
-- [🔍 Troubleshooting](#-troubleshooting)
-- [👥 Maintainers](#-maintainers)
-- [💬 Support](#-support)
-- [🙏 Acknowledgements](#-acknowledgements)
-- [📄 License](#-license)
-
-## 🤔 What is Spec-Driven Development?
-
-Spec-Driven Development **flips the script** on traditional software development. For decades, code has been king — specifications were just scaffolding we built and discarded once the "real work" of coding began. Spec-Driven Development changes this: **specifications become executable**, directly generating working implementations rather than just guiding them.
 
 ## ⚡ Get started
 
@@ -76,524 +35,714 @@ uvx --from git+https://github.com/libs-factory/riso-spec-kit.git specify init <P
 - Better tool management with `uv tool list`, `uv tool upgrade`, `uv tool uninstall`
 - Cleaner shell configuration
 
-### 2. Establish project principles
+---
 
-Use the **`/speckit.constitution`** command to create your project's governing principles and development guidelines that will guide all subsequent development.
+## 📋 Core Workflows
 
+### 1. Initialize Spec Kit for New Project
+
+Complete setup guide with all RisoTech enhancement options.
+
+#### Step 1: Install Specify CLI
+
+Choose your installation method:
+
+**Option A: Persistent Installation (Recommended)**
 ```bash
-/speckit.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements
+# Install once, use everywhere
+uv tool install specify-cli --from git+https://github.com/libs-factory/riso-spec-kit.git
+
+# Verify installation
+uv tool list | grep specify-cli
+# Expected output: specify-cli v0.1.0
 ```
 
-### 3. Create the spec
-
-Use the **`/speckit.specify`** command to describe what you want to build. Focus on the **what** and **why**, not the tech stack.
-
+**Option B: One-time Usage**
 ```bash
-/speckit.specify Build an application that can help me organize my photos in separate photo albums. Albums are grouped by date and can be re-organized by dragging and dropping on the main page. Albums are never in other nested albums. Within each album, photos are previewed in a tile-like interface.
+# Run without installing (for testing)
+uvx --from git+https://github.com/libs-factory/riso-spec-kit.git specify init <PROJECT_NAME>
 ```
 
-### 4. Create a technical implementation plan
+---
 
-Use the **`/speckit.plan`** command to provide your tech stack and architecture choices.
+#### Step 2: Enable RisoTech Features (Optional but Recommended)
 
+Choose your feature adoption path:
+
+**Option A: Full RisoTech Mode (All Features - Recommended for New Projects)**
 ```bash
-/speckit.plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
+# Add to your shell profile (~/.bashrc, ~/.zshrc, etc.)
+export SPECIFY_RISOTECH_MODE=true
+
+# This enables ALL RisoTech enhancements:
+# ✅ Tiered Constitution Framework
+# ✅ EPIC Decomposition (for 30+ task features)
+# ✅ Story Management with dependency tracking
+# ✅ Workflow Orchestration with stage detection
+# ✅ Progress Tracking & Reporting
+# ✅ Risk & Bottleneck Analysis
+
+# Reload shell
+source ~/.bashrc  # or ~/.zshrc
 ```
 
-### 5. Break down into tasks
-
-Use **`/speckit.tasks`** to create an actionable task list from your implementation plan.
-
+**Option B: Selective Features (Gradual Adoption)**
 ```bash
-/speckit.tasks
+# Enable only specific features
+
+# Constitution Framework (recommended)
+export SPECIFY_TIERED_CONSTITUTION=true
+
+# EPIC Decomposition (for large features)
+export SPECIFY_EPIC_DECOMPOSITION=true
+
+# Story Tracking (for story-by-story development)
+export SPECIFY_STORY_TRACKING=true
+
+# Progress Reporting (for status reports)
+export SPECIFY_PROGRESS_REPORTING=true
+
+# Workflow Settings (fine-tuning)
+export SPECIFY_AUTO_UPDATE_BACKLOG=true        # Auto-save story progress
+export SPECIFY_TRACK_ACTUAL_HOURS=true         # Track actual hours vs estimated
+export SPECIFY_CALCULATE_VELOCITY=true         # Calculate story velocity
+export SPECIFY_REQUIRE_READY_STATUS=true       # Require story to be READY before implementation
+export SPECIFY_AUTO_UNBLOCK_STORIES=true       # Auto-unblock stories when dependencies complete
+export SPECIFY_BLOCK_ON_INCOMPLETE_DEPS=true   # Auto-block stories with incomplete dependencies
 ```
 
-### 6. Execute implementation
-
-Use **`/speckit.implement`** to execute all tasks and build your feature according to the plan.
-
+**Option C: Standard Mode (No RisoTech Features)**
 ```bash
-/speckit.implement
+# Don't set any environment variables
+# Use traditional Specify CLI workflow
+# All new features are opt-in, so default behavior is unchanged
 ```
 
-For detailed step-by-step instructions, see our [comprehensive guide](./spec-driven.md).
+---
 
-## 📽️ Video Overview
-
-Want to see Spec Kit in action? Watch our [video overview](https://www.youtube.com/watch?v=a9eR1xsfvHg&pp=0gcJCckJAYcqIYzv)!
-
-[![Spec Kit video header](/media/spec-kit-video-header.jpg)](https://www.youtube.com/watch?v=a9eR1xsfvHg&pp=0gcJCckJAYcqIYzv)
-
-## 🤖 Supported AI Agents
-
-| Agent                                                     | Support | Notes                                             |
-|-----------------------------------------------------------|---------|---------------------------------------------------|
-| [Claude Code](https://www.anthropic.com/claude-code)      | ✅ |                                                   |
-| [GitHub Copilot](https://code.visualstudio.com/)          | ✅ |                                                   |
-| [Gemini CLI](https://github.com/google-gemini/gemini-cli) | ✅ |                                                   |
-| [Cursor](https://cursor.sh/)                              | ✅ |                                                   |
-| [Qwen Code](https://github.com/QwenLM/qwen-code)          | ✅ |                                                   |
-| [opencode](https://opencode.ai/)                          | ✅ |                                                   |
-| [Windsurf](https://windsurf.com/)                         | ✅ |                                                   |
-| [Kilo Code](https://github.com/Kilo-Org/kilocode)         | ✅ |                                                   |
-| [Auggie CLI](https://docs.augmentcode.com/cli/overview)   | ✅ |                                                   |
-| [Roo Code](https://roocode.com/)                          | ✅ |                                                   |
-| [Codex CLI](https://github.com/openai/codex)              | ✅ |                                                   |
-| [Amazon Q Developer CLI](https://aws.amazon.com/developer/learning/q-developer-cli/) | ⚠️ | Amazon Q Developer CLI [does not support](https://github.com/aws/amazon-q-developer-cli/issues/3064) custom arguments for slash commands. |
-
-## 🔧 Specify CLI Reference
-
-The `specify` command supports the following options:
-
-### Commands
-
-| Command     | Description                                                    |
-|-------------|----------------------------------------------------------------|
-| `init`      | Initialize a new Specify project from the latest template      |
-| `check`     | Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`) |
-
-### `specify init` Arguments & Options
-
-| Argument/Option        | Type     | Description                                                                  |
-|------------------------|----------|------------------------------------------------------------------------------|
-| `<project-name>`       | Argument | Name for your new project directory (optional if using `--here`, or use `.` for current directory) |
-| `--ai`                 | Option   | AI assistant to use: `claude`, `gemini`, `copilot`, `cursor`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, or `q` |
-| `--script`             | Option   | Script variant to use: `sh` (bash/zsh) or `ps` (PowerShell)                 |
-| `--ignore-agent-tools` | Flag     | Skip checks for AI agent tools like Claude Code                             |
-| `--no-git`             | Flag     | Skip git repository initialization                                          |
-| `--here`               | Flag     | Initialize project in the current directory instead of creating a new one   |
-| `--force`              | Flag     | Force merge/overwrite when initializing in current directory (skip confirmation) |
-| `--skip-tls`           | Flag     | Skip SSL/TLS verification (not recommended)                                 |
-| `--debug`              | Flag     | Enable detailed debug output for troubleshooting                            |
-| `--github-token`       | Option   | GitHub token for API requests (or set GH_TOKEN/GITHUB_TOKEN env variable)  |
-
-### Examples
+#### Step 3: Initialize Project Structure
 
 ```bash
-# Basic project initialization
-specify init my-project
+# Navigate to your project directory
+cd /path/to/your/project
 
-# Initialize with specific AI assistant
-specify init my-project --ai claude
-
-# Initialize with Cursor support
-specify init my-project --ai cursor
-
-# Initialize with Windsurf support
-specify init my-project --ai windsurf
-
-# Initialize with PowerShell scripts (Windows/cross-platform)
-specify init my-project --ai copilot --script ps
-
-# Initialize in current directory
-specify init . --ai copilot
-# or use the --here flag
-specify init --here --ai copilot
-
-# Force merge into current (non-empty) directory without confirmation
-specify init . --force --ai copilot
+# Initialize Spec Kit with your preferred AI agent
+specify init my-project --ai claude    # For Claude
 # or
-specify init --here --force --ai copilot
+specify init my-project --ai copilot   # For GitHub Copilot
+# or
+specify init my-project --ai cursor    # For Cursor
 
-# Skip git initialization
-specify init my-project --ai gemini --no-git
+# This creates:
+# .specify/
+# ├── memory/
+# │   ├── project-context.md      # Project overview
+# │   └── technical-context.md    # Tech stack details
+# ├── specs/                      # Feature specifications (empty initially)
+# └── templates/                  # Workflow command templates
+```
 
-# Enable debug output for troubleshooting
-specify init my-project --ai claude --debug
+---
 
-# Use GitHub token for API requests (helpful for corporate environments)
-specify init my-project --ai claude --github-token ghp_your_token_here
+#### Step 4: Set Up Project Constitution (RisoTech Feature)
 
-# Check system requirements
+Create your project's governing principles with three-tier priority system.
+
+**Option A: Use a Technology Preset (Quick Start - Recommended)**
+
+```bash
+# React + TypeScript
+/speckit.constitution-upgrade --preset react-typescript
+
+# Creates tiered constitution:
+# CORE (Non-negotiable):
+#   - TypeScript strict mode required
+#   - 80%+ test coverage
+#   - No 'any' types except migrations
+#   - Security: Input validation, XSS prevention
+#
+# HIGH-PRIORITY (Strong recommendations):
+#   - React Hooks over class components
+#   - Functional programming patterns
+#   - CSS-in-JS or Tailwind
+#   - Component composition over inheritance
+#
+# FLEXIBLE (Guidelines):
+#   - Prefer named exports
+#   - File naming: kebab-case
+#   - Max file length: 300 lines
+```
+
+**Other Presets:**
+```bash
+# Next.js + Tailwind
+/speckit.constitution-upgrade --preset nextjs-tailwind
+
+# Django + PostgreSQL
+/speckit.constitution-upgrade --preset django-postgresql
+
+# List all available presets
+/speckit.constitution-upgrade --list
+```
+
+**Option B: Create Custom Constitution**
+
+```bash
+/speckit.constitution-upgrade --custom
+
+# Follow interactive prompts to define:
+# 1. CORE rules (must-follow, enforced in code review)
+#    Example: "All API endpoints must have authentication"
+#
+# 2. HIGH-PRIORITY rules (strong recommendations)
+#    Example: "Use repository pattern for data access"
+#
+# 3. FLEXIBLE rules (guidelines, team preferences)
+#    Example: "Prefer async/await over .then() chains"
+```
+
+**Constitution File Created:**
+```
+.specify/constitution.md
+
+# Structure:
+## CORE Rules (Non-Negotiable)
+- Rule 1: [Title]
+  - Description: [Details]
+  - Rationale: [Why it's CORE]
+  - Examples: [Code examples]
+
+## HIGH-PRIORITY Rules (Strong Recommendations)
+- Rule 2: [Title]
+  ...
+
+## FLEXIBLE Rules (Guidelines)
+- Rule 3: [Title]
+  ...
+```
+
+---
+
+#### Step 5: Configure Project Context
+
+Fill in project-specific information to provide AI context:
+
+**A. Project Context** (`.specify/memory/project-context.md`)
+
+```bash
+# Edit with your favorite editor
+code .specify/memory/project-context.md
+
+# Fill in:
+# 1. Project Overview
+#    - Name: "Acme E-commerce Platform"
+#    - Description: "B2C e-commerce with inventory management"
+#    - Business Goals: "Increase online sales by 30%"
+#
+# 2. Target Users
+#    - Primary: "Online shoppers (18-45 years old)"
+#    - Secondary: "Store managers, inventory staff"
+#
+# 3. Key Features
+#    - Product catalog with search
+#    - Shopping cart & checkout
+#    - Inventory management dashboard
+#    - Analytics & reporting
+#
+# 4. Success Metrics
+#    - User engagement: "Average session duration > 5 minutes"
+#    - Performance: "Page load time < 2 seconds"
+#    - Quality: "Bug rate < 1 per 1000 users/month"
+```
+
+**B. Technical Context** (`.specify/memory/technical-context.md`)
+
+```bash
+code .specify/memory/technical-context.md
+
+# Fill in:
+# 1. Tech Stack
+#    Frontend: React 18 + TypeScript + Vite
+#    Backend: Node.js + Express + PostgreSQL
+#    Deployment: Docker + AWS ECS
+#    CI/CD: GitHub Actions
+#
+# 2. Architecture Decisions
+#    - Microservices architecture (auth, catalog, orders)
+#    - Event-driven communication (RabbitMQ)
+#    - REST API + GraphQL for complex queries
+#
+# 3. Development Environment
+#    - Node.js 20+
+#    - PostgreSQL 15
+#    - Redis for caching
+#    - Docker Compose for local development
+#
+# 4. Coding Standards
+#    - ESLint + Prettier
+#    - Husky pre-commit hooks
+#    - Conventional commits
+#    - PR requires 2 approvals
+```
+
+---
+
+#### Step 6: Verify Setup
+
+**Run Spec Kit Check**
+
+```bash
+# Comprehensive validation
 specify check
+
+# Expected output:
+# ✅ .specify/ directory exists
+# ✅ constitution.md configured (15 rules: 4 CORE, 6 HIGH-PRIORITY, 5 FLEXIBLE)
+# ✅ project-context.md configured
+# ✅ technical-context.md configured
+# ✅ templates/ directory ready
+# ✅ RisoTech mode: ENABLED
+#
+# Feature Status:
+# ✅ Tiered Constitution: ENABLED
+# ✅ EPIC Decomposition: ENABLED
+# ✅ Story Tracking: ENABLED
+# ✅ Progress Reporting: ENABLED
+#
+# 🎉 Spec Kit initialized successfully!
+# 📚 Next: Create your first feature with /speckit.specify
 ```
-
-### Available Slash Commands
-
-After running `specify init`, your AI coding agent will have access to these slash commands for structured development:
-
-#### Core Commands
-
-Essential commands for the Spec-Driven Development workflow:
-
-| Command                  | Description                                                           |
-|--------------------------|-----------------------------------------------------------------------|
-| `/speckit.constitution`  | Create or update project governing principles and development guidelines |
-| `/speckit.specify`       | Define what you want to build (requirements and user stories)        |
-| `/speckit.plan`          | Create technical implementation plans with your chosen tech stack     |
-| `/speckit.tasks`         | Generate actionable task lists for implementation                     |
-| `/speckit.implement`     | Execute all tasks to build the feature according to the plan         |
-
-#### Optional Commands
-
-Additional commands for enhanced quality and validation:
-
-| Command              | Description                                                           |
-|----------------------|-----------------------------------------------------------------------|
-| `/speckit.clarify`   | Clarify underspecified areas (recommended before `/speckit.plan`; formerly `/quizme`) |
-| `/speckit.analyze`   | Cross-artifact consistency & coverage analysis (run after `/speckit.tasks`, before `/speckit.implement`) |
-| `/speckit.checklist` | Generate custom quality checklists that validate requirements completeness, clarity, and consistency (like "unit tests for English") |
-
-### Environment Variables
-
-| Variable         | Description                                                                                    |
-|------------------|------------------------------------------------------------------------------------------------|
-| `SPECIFY_FEATURE` | Override feature detection for non-Git repositories. Set to the feature directory name (e.g., `001-photo-albums`) to work on a specific feature when not using Git branches.<br/>**Must be set in the context of the agent you're working with prior to using `/speckit.plan` or follow-up commands. |
-
-## 📚 Core philosophy
-
-Spec-Driven Development is a structured process that emphasizes:
-
-- **Intent-driven development** where specifications define the "_what_" before the "_how_"
-- **Rich specification creation** using guardrails and organizational principles
-- **Multi-step refinement** rather than one-shot code generation from prompts
-- **Heavy reliance** on advanced AI model capabilities for specification interpretation
-
-## 🌟 Development phases
-
-| Phase | Focus | Key Activities |
-|-------|-------|----------------|
-| **0-to-1 Development** ("Greenfield") | Generate from scratch | <ul><li>Start with high-level requirements</li><li>Generate specifications</li><li>Plan implementation steps</li><li>Build production-ready applications</li></ul> |
-| **Creative Exploration** | Parallel implementations | <ul><li>Explore diverse solutions</li><li>Support multiple technology stacks & architectures</li><li>Experiment with UX patterns</li></ul> |
-| **Iterative Enhancement** ("Brownfield") | Brownfield modernization | <ul><li>Add features iteratively</li><li>Modernize legacy systems</li><li>Adapt processes</li></ul> |
-
-## 🎯 Experimental goals
-
-Our research and experimentation focus on:
-
-### Technology independence
-
-- Create applications using diverse technology stacks
-- Validate the hypothesis that Spec-Driven Development is a process not tied to specific technologies, programming languages, or frameworks
-
-### Enterprise constraints
-
-- Demonstrate mission-critical application development
-- Incorporate organizational constraints (cloud providers, tech stacks, engineering practices)
-- Support enterprise design systems and compliance requirements
-
-### User-centric development
-
-- Build applications for different user cohorts and preferences
-- Support various development approaches (from vibe-coding to AI-native development)
-
-### Creative & iterative processes
-
-- Validate the concept of parallel implementation exploration
-- Provide robust iterative feature development workflows
-- Extend processes to handle upgrades and modernization tasks
-
-## 🔧 Prerequisites
-
-- **Linux/macOS** (or WSL2 on Windows)
-- AI coding agent: [Claude Code](https://www.anthropic.com/claude-code), [GitHub Copilot](https://code.visualstudio.com/), [Gemini CLI](https://github.com/google-gemini/gemini-cli), [Cursor](https://cursor.sh/), [Qwen CLI](https://github.com/QwenLM/qwen-code), [opencode](https://opencode.ai/), [Codex CLI](https://github.com/openai/codex), [Windsurf](https://windsurf.com/), or [Amazon Q Developer CLI](https://aws.amazon.com/developer/learning/q-developer-cli/)
-- [uv](https://docs.astral.sh/uv/) for package management
-- [Python 3.11+](https://www.python.org/downloads/)
-- [Git](https://git-scm.com/downloads)
-
-If you encounter issues with an agent, please open an issue so we can refine the integration.
-
-## 📖 Learn more
-
-- **[Complete Spec-Driven Development Methodology](./spec-driven.md)** - Deep dive into the full process
-- **[Detailed Walkthrough](#-detailed-process)** - Step-by-step implementation guide
 
 ---
 
-## 📋 Detailed process
+**🎉 Setup Complete!**
 
-<details>
-<summary>Click to expand the detailed step-by-step walkthrough</summary>
+Your project is now configured with:
 
-You can use the Specify CLI to bootstrap your project, which will bring in the required artifacts in your environment. Run:
+✅ **Spec Kit Core**
+- Project structure initialized
+- Templates ready for workflows
 
-```bash
-specify init <project_name>
-```
+✅ **RisoTech Enhancements** (if enabled)
+- 📜 Tiered Constitution (CORE/HIGH-PRIORITY/FLEXIBLE)
+- 📊 EPIC Decomposition (automatic for 30+ task features)
+- 📈 Story Management (lifecycle tracking with dependencies)
+- 🎯 Workflow Orchestration (stage detection & validation)
+- 📊 Progress Tracking (task/story/feature levels)
 
-Or initialize in the current directory:
+✅ **Project Context**
+- Business goals documented
+- Technical stack defined
+- Team standards established
 
-```bash
-specify init .
-# or use the --here flag
-specify init --here
-# Skip confirmation when the directory already has files
-specify init . --force
-# or
-specify init --here --force
-```
+**Next:** Create your first feature (see Section 2: Feature Development Workflow)
 
-![Specify CLI bootstrapping a new project in the terminal](./media/specify_cli.gif)
+---
 
-You will be prompted to select the AI agent you are using. You can also proactively specify it directly in the terminal:
+### 2. Feature Development Workflow (Specify to Implement)
 
-```bash
-specify init <project_name> --ai claude
-specify init <project_name> --ai gemini
-specify init <project_name> --ai copilot
+Complete workflow from feature idea to implementation:
 
-# Or in current directory:
-specify init . --ai claude
-specify init . --ai codex
+#### Standard Workflow (Small/Medium Features)
 
-# or use --here flag
-specify init --here --ai claude
-specify init --here --ai codex
-
-# Force merge into a non-empty current directory
-specify init . --force --ai claude
-
-# or
-specify init --here --force --ai claude
-```
-
-The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, or Amazon Q Developer CLI installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
+**Step 1: Create Feature Specification**
 
 ```bash
-specify init <project_name> --ai claude --ignore-agent-tools
+# Create a new feature branch
+git checkout -b feature/user-authentication
+
+# Generate feature specification
+/speckit.specify "Implement user authentication with email/password and social login (Google, GitHub)"
+
+# This creates:
+# .specify/specs/001-user-authentication/
+# ├── spec.md          # Feature specification with user stories
+# └── README.md        # Feature overview
+
+# Review and refine spec.md:
+# - User stories with priorities (P1, P2, P3)
+# - Acceptance criteria
+# - Success metrics
+# - Out of scope items
 ```
 
-### **STEP 1:** Establish project principles
+**Step 2: Generate Implementation Plan**
 
-Go to the project folder and run your AI agent. In our example, we're using `claude`.
+```bash
+# Generate technical plan
+/speckit.plan
 
-![Bootstrapping Claude Code environment](./media/bootstrap-claude-code.gif)
+# This creates:
+# .specify/specs/001-user-authentication/
+# ├── spec.md
+# ├── plan.md          # Technical implementation plan
+# ├── data-model.md    # Database schema (if needed)
+# ├── contracts/       # API contracts (if needed)
+# └── research.md      # Technical research notes
 
-You will know that things are configured correctly if you see the `/speckit.constitution`, `/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, and `/speckit.implement` commands available.
-
-The first step should be establishing your project's governing principles using the `/speckit.constitution` command. This helps ensure consistent decision-making throughout all subsequent development phases:
-
-```text
-/speckit.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements. Include governance for how these principles should guide technical decisions and implementation choices.
+# Detects feature complexity:
+# - SMALL (1-5 tasks): Simple feature
+# - MEDIUM (6-15 tasks): Standard feature
+# - LARGE (16-30 tasks): Complex feature - consider EPIC
+# - EPIC (30+ tasks): Very complex - requires decomposition
 ```
 
-This step creates or updates the `.specify/memory/constitution.md` file with your project's foundational guidelines that the AI agent will reference during specification, planning, and implementation phases.
+**Step 3: Generate Task Breakdown**
 
-### **STEP 2:** Create project specifications
+```bash
+# Generate actionable tasks
+/speckit.tasks
 
-With your project principles established, you can now create the functional specifications. Use the `/speckit.specify` command and then provide the concrete requirements for the project you want to develop.
-
->[!IMPORTANT]
->Be as explicit as possible about _what_ you are trying to build and _why_. **Do not focus on the tech stack at this point**.
-
-An example prompt:
-
-```text
-Develop Taskify, a team productivity platform. It should allow users to create projects, add team members,
-assign tasks, comment and move tasks between boards in Kanban style. In this initial phase for this feature,
-let's call it "Create Taskify," let's have multiple users but the users will be declared ahead of time, predefined.
-I want five users in two different categories, one product manager and four engineers. Let's create three
-different sample projects. Let's have the standard Kanban columns for the status of each task, such as "To Do,"
-"In Progress," "In Review," and "Done." There will be no login for this application as this is just the very
-first testing thing to ensure that our basic features are set up. For each task in the UI for a task card,
-you should be able to change the current status of the task between the different columns in the Kanban work board.
-You should be able to leave an unlimited number of comments for a particular card. You should be able to, from that task
-card, assign one of the valid users. When you first launch Taskify, it's going to give you a list of the five users to pick
-from. There will be no password required. When you click on a user, you go into the main view, which displays the list of
-projects. When you click on a project, you open the Kanban board for that project. You're going to see the columns.
-You'll be able to drag and drop cards back and forth between different columns. You will see any cards that are
-assigned to you, the currently logged in user, in a different color from all the other ones, so you can quickly
-see yours. You can edit any comments that you make, but you can't edit comments that other people made. You can
-delete any comments that you made, but you can't delete comments anybody else made.
+# This creates:
+# .specify/specs/001-user-authentication/tasks.md
+# - Phase 1: Setup
+# - Phase 2: Implementation by user story
+# - Phase 3: Integration & testing
+# - Task numbering (T001, T002, ...)
+# - [P] markers for parallel tasks
+# - Dependencies clearly marked
 ```
 
-After this prompt is entered, you should see Claude Code kick off the planning and spec drafting process. Claude Code will also trigger some of the built-in scripts to set up the repository.
+**Step 4: Implement**
 
-Once this step is completed, you should have a new branch created (e.g., `001-create-taskify`), as well as a new specification in the `specs/001-create-taskify` directory.
-
-The produced specification should contain a set of user stories and functional requirements, as defined in the template.
-
-At this stage, your project folder contents should resemble the following:
-
-```text
-└── .specify
-    ├── memory
-    │	 └── constitution.md
-    ├── scripts
-    │	 ├── check-prerequisites.sh
-    │	 ├── common.sh
-    │	 ├── create-new-feature.sh
-    │	 ├── setup-plan.sh
-    │	 └── update-claude-md.sh
-    ├── specs
-    │	 └── 001-create-taskify
-    │	     └── spec.md
-    └── templates
-        ├── plan-template.md
-        ├── spec-template.md
-        └── tasks-template.md
-```
-
-### **STEP 3:** Functional specification clarification (required before planning)
-
-With the baseline specification created, you can go ahead and clarify any of the requirements that were not captured properly within the first shot attempt.
-
-You should run the structured clarification workflow **before** creating a technical plan to reduce rework downstream.
-
-Preferred order:
-1. Use `/speckit.clarify` (structured) – sequential, coverage-based questioning that records answers in a Clarifications section.
-2. Optionally follow up with ad-hoc free-form refinement if something still feels vague.
-
-If you intentionally want to skip clarification (e.g., spike or exploratory prototype), explicitly state that so the agent doesn't block on missing clarifications.
-
-Example free-form refinement prompt (after `/speckit.clarify` if still needed):
-
-```text
-For each sample project or project that you create there should be a variable number of tasks between 5 and 15
-tasks for each one randomly distributed into different states of completion. Make sure that there's at least
-one task in each stage of completion.
-```
-
-You should also ask Claude Code to validate the **Review & Acceptance Checklist**, checking off the things that are validated/pass the requirements, and leave the ones that are not unchecked. The following prompt can be used:
-
-```text
-Read the review and acceptance checklist, and check off each item in the checklist if the feature spec meets the criteria. Leave it empty if it does not.
-```
-
-It's important to use the interaction with Claude Code as an opportunity to clarify and ask questions around the specification - **do not treat its first attempt as final**.
-
-### **STEP 4:** Generate a plan
-
-You can now be specific about the tech stack and other technical requirements. You can use the `/speckit.plan` command that is built into the project template with a prompt like this:
-
-```text
-We are going to generate this using .NET Aspire, using Postgres as the database. The frontend should use
-Blazor server with drag-and-drop task boards, real-time updates. There should be a REST API created with a projects API,
-tasks API, and a notifications API.
-```
-
-The output of this step will include a number of implementation detail documents, with your directory tree resembling this:
-
-```text
-.
-├── CLAUDE.md
-├── memory
-│	 └── constitution.md
-├── scripts
-│	 ├── check-prerequisites.sh
-│	 ├── common.sh
-│	 ├── create-new-feature.sh
-│	 ├── setup-plan.sh
-│	 └── update-claude-md.sh
-├── specs
-│	 └── 001-create-taskify
-│	     ├── contracts
-│	     │	 ├── api-spec.json
-│	     │	 └── signalr-spec.md
-│	     ├── data-model.md
-│	     ├── plan.md
-│	     ├── quickstart.md
-│	     ├── research.md
-│	     └── spec.md
-└── templates
-    ├── CLAUDE-template.md
-    ├── plan-template.md
-    ├── spec-template.md
-    └── tasks-template.md
-```
-
-Check the `research.md` document to ensure that the right tech stack is used, based on your instructions. You can ask Claude Code to refine it if any of the components stand out, or even have it check the locally-installed version of the platform/framework you want to use (e.g., .NET).
-
-Additionally, you might want to ask Claude Code to research details about the chosen tech stack if it's something that is rapidly changing (e.g., .NET Aspire, JS frameworks), with a prompt like this:
-
-```text
-I want you to go through the implementation plan and implementation details, looking for areas that could
-benefit from additional research as .NET Aspire is a rapidly changing library. For those areas that you identify that
-require further research, I want you to update the research document with additional details about the specific
-versions that we are going to be using in this Taskify application and spawn parallel research tasks to clarify
-any details using research from the web.
-```
-
-During this process, you might find that Claude Code gets stuck researching the wrong thing - you can help nudge it in the right direction with a prompt like this:
-
-```text
-I think we need to break this down into a series of steps. First, identify a list of tasks
-that you would need to do during implementation that you're not sure of or would benefit
-from further research. Write down a list of those tasks. And then for each one of these tasks,
-I want you to spin up a separate research task so that the net results is we are researching
-all of those very specific tasks in parallel. What I saw you doing was it looks like you were
-researching .NET Aspire in general and I don't think that's gonna do much for us in this case.
-That's way too untargeted research. The research needs to help you solve a specific targeted question.
-```
-
->[!NOTE]
->Claude Code might be over-eager and add components that you did not ask for. Ask it to clarify the rationale and the source of the change.
-
-### **STEP 5:** Have Claude Code validate the plan
-
-With the plan in place, you should have Claude Code run through it to make sure that there are no missing pieces. You can use a prompt like this:
-
-```text
-Now I want you to go and audit the implementation plan and the implementation detail files.
-Read through it with an eye on determining whether or not there is a sequence of tasks that you need
-to be doing that are obvious from reading this. Because I don't know if there's enough here. For example,
-when I look at the core implementation, it would be useful to reference the appropriate places in the implementation
-details where it can find the information as it walks through each step in the core implementation or in the refinement.
-```
-
-This helps refine the implementation plan and helps you avoid potential blind spots that Claude Code missed in its planning cycle. Once the initial refinement pass is complete, ask Claude Code to go through the checklist once more before you can get to the implementation.
-
-You can also ask Claude Code (if you have the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli) installed) to go ahead and create a pull request from your current branch to `main` with a detailed description, to make sure that the effort is properly tracked.
-
->[!NOTE]
->Before you have the agent implement it, it's also worth prompting Claude Code to cross-check the details to see if there are any over-engineered pieces (remember - it can be over-eager). If over-engineered components or decisions exist, you can ask Claude Code to resolve them. Ensure that Claude Code follows the [constitution](base/memory/constitution.md) as the foundational piece that it must adhere to when establishing the plan.
-
-### STEP 6: Implementation
-
-Once ready, use the `/speckit.implement` command to execute your implementation plan:
-
-```text
+```bash
+# Execute implementation
 /speckit.implement
+
+# Process:
+# 1. Validates constitution compliance (if enabled)
+# 2. Checks checklist prerequisites
+# 3. Executes tasks phase-by-phase
+# 4. Marks tasks complete in tasks.md
+# 5. Updates progress tracking
 ```
 
-The `/speckit.implement` command will:
-- Validate that all prerequisites are in place (constitution, spec, plan, and tasks)
-- Parse the task breakdown from `tasks.md`
-- Execute tasks in the correct order, respecting dependencies and parallel execution markers
-- Follow the TDD approach defined in your task plan
-- Provide progress updates and handle errors appropriately
+**Step 5: Verify & Commit**
 
->[!IMPORTANT]
->The AI agent will execute local CLI commands (such as `dotnet`, `npm`, etc.) - make sure you have the required tools installed on your machine.
+```bash
+# Verify all tasks complete
+grep "- \[ \]" .specify/specs/001-user-authentication/tasks.md
+# Should return empty (all tasks marked [X])
 
-Once the implementation is complete, test the application and resolve any runtime errors that may not be visible in CLI logs (e.g., browser console errors). You can copy and paste such errors back to your AI agent for resolution.
+# Commit changes
+git add .
+git commit -m "feat: Implement user authentication
 
-</details>
+- Add email/password authentication
+- Add Google OAuth integration
+- Add GitHub OAuth integration
+- Add JWT token management
+- Add password reset flow
+
+🤖 Generated with Spec Kit"
+
+# Create pull request
+git push origin feature/user-authentication
+gh pr create --fill
+```
+
+#### EPIC Workflow (Large/Complex Features 30+ tasks)
+
+> 💡 **When to use EPIC workflow:**
+> - Feature estimates 30+ tasks
+> - Multiple independent user journeys
+> - Implementation will span weeks/months
+> - Need incremental delivery (MVP → enhancements)
+
+**Key difference from Standard Workflow:**
+EPIC workflow breaks features into **user stories**, then generates **tasks per story**.
+
+```
+Standard:  specify → plan → tasks (all 45) → implement (all at once)
+EPIC:      specify → plan → epic → story → tasks (8-12) → implement (per story) ↻
+```
+
+**Step 1-2: Same as Standard Workflow**
+
+```bash
+git checkout -b feature/user-management-system
+
+/speckit.specify "Build comprehensive user management system with authentication, authorization, profile management, activity tracking, and admin dashboard"
+
+/speckit.plan
+# Output: "Feature complexity: EPIC (~45 tasks estimated)"
+# Recommendation: "Consider running /speckit.epic to decompose into user stories"
+```
+
+**Step 3: Decompose into Stories**
+
+```bash
+# Enable RisoTech EPIC mode
+export SPECIFY_RISOTECH_MODE=true
+
+# Decompose EPIC into user stories
+/speckit.epic
+
+# This creates:
+# .specify/specs/001-user-management/
+# ├── epic-breakdown.md    # Story decomposition
+# └── stories/
+#     ├── backlog.json     # Story tracking
+#     ├── US-001.md        # MVP: User Authentication
+#     ├── US-002.md        # User Profile Management
+#     ├── US-003.md        # Role-Based Access Control
+#     ├── US-004.md        # Activity Tracking
+#     └── US-005.md        # Admin Dashboard
+
+# Review epic-breakdown.md:
+# - Story breakdown by priority (P1, P2, P3)
+# - Dependency graph
+# - Implementation strategy (MVP first)
+```
+
+**Step 4: View & Prioritize Stories**
+
+```bash
+# List all stories
+/speckit.story --list
+
+# Output:
+# | Story ID | Title                    | Priority | Status | Progress | Dependencies |
+# |----------|--------------------------|----------|--------|----------|--------------|
+# | US-001   | User Authentication      | P1       | DRAFT  | 0/10     | -            |
+# | US-002   | User Profile Management  | P1       | DRAFT  | 0/8      | US-001       |
+# | US-003   | Role-Based Access Control| P2       | DRAFT  | 0/12     | US-001       |
+# | US-004   | Activity Tracking        | P2       | DRAFT  | 0/6      | US-002       |
+# | US-005   | Admin Dashboard          | P3       | DRAFT  | 0/9      | US-003,US-004|
+
+# Mark MVP story as ready
+/speckit.story US-001 --status ready
+```
+
+**Step 5: Implement Story-by-Story**
+
+> ⚠️ **Important**: Each story requires its own task breakdown before implementation.
+> Stories define **WHAT** to build, tasks define **HOW** to build it.
+
+```bash
+# A. Get next ready story
+/speckit.story --next
+# Output: US-001 (MVP story, no dependencies, status: READY)
+
+# B. Generate tasks for THIS story only
+/speckit.tasks --story US-001
+# Creates: .specify/specs/001-user-management/tasks.md
+# Contains 8-12 tasks specific to US-001:
+#   T001: Create User model schema
+#   T002: Implement password hashing
+#   T003: Create login API endpoint
+#   T004: Add JWT token generation
+#   T005: Implement login form UI
+#   T006: Add error handling
+#   T007: Write unit tests
+#   T008: Integration testing
+
+# C. Implement the story using generated tasks
+/speckit.implement --story US-001
+# Reads tasks.md and executes each task
+# Auto-updates backlog.json with progress
+# Marks tasks complete as you go: [X]
+
+# D. Check implementation progress
+/speckit.story US-001
+# Output: "Tasks 8/10 (80%), Estimated 20h, Actual 18.5h"
+
+# E. Mark story complete when all tasks done
+/speckit.story US-001 --complete
+# Validates all tasks marked [X]
+# Updates backlog.json: status → COMPLETE
+# Auto-unblocks dependent stories (US-002, US-003)
+
+# F. Commit the completed story
+git add .
+git commit -m "feat: Complete US-001 - User Authentication
+
+Implemented:
+- User model with email/password fields
+- Password hashing with bcrypt
+- Login API with JWT tokens
+- Login form with validation
+- Full test coverage (unit + integration)
+
+🤖 Generated with Spec Kit
+Story: US-001 (10/10 tasks complete, 18.5h actual vs 20h estimated)"
+
+git push origin feature/user-management-system
+
+# G. Move to next story - REPEAT THE CYCLE
+/speckit.story --next
+# Output: US-002 - User Profile Management (now unblocked)
+
+/speckit.tasks --story US-002
+# Generate fresh tasks for US-002 (different from US-001)
+
+/speckit.implement --story US-002
+# Implement US-002 tasks
+
+# Continue this cycle until all stories complete:
+# story → tasks → implement → complete → next story
+```
+
+**Why this approach?**
+
+- ✅ **Focused scope**: Work on 8-12 tasks at a time (not 45+)
+- ✅ **Clear progress**: Track completion per story
+- ✅ **Smaller PRs**: One PR per story = easier reviews
+- ✅ **Better estimates**: Story-level estimation accuracy
+- ✅ **Flexible pivots**: Can reprioritize remaining stories anytime
+
+**Step 6: Track Overall Progress**
+
+```bash
+# Generate comprehensive progress report
+/speckit.status --format markdown --save
+
+# Creates: .specify/specs/001-user-management/progress-report.md
+# Contains:
+# - Workflow stage progress (specify ✓, plan ✓, epic ✓, stories 3/5...)
+# - Story breakdown table (completed, in progress, blocked)
+# - Task completion metrics per story
+# - Time tracking (estimated vs actual hours)
+# - Velocity calculation (stories per week)
+# - Risk analysis (blocked stories, overdue tasks)
+# - Bottleneck detection (slow stories, dependency chains)
+# - Timeline projection (estimated completion date)
+# - Next actions (what to do next)
+
+# Quick status check (console output)
+/speckit.status
+
+# Example output:
+# ╔══════════════════════════════════════════════════════════════╗
+# ║  FEATURE PROGRESS: User Management System                    ║
+# ╚══════════════════════════════════════════════════════════════╝
+#
+# Feature ID: 001-user-management
+# Current Stage: Implementation (EPIC mode)
+# Overall Progress: 60% complete
+#
+# 📊 Story Progress:
+# ┌──────────┬───────────────────────┬──────────┬─────────────┬──────────┐
+# │ Story ID │ Title                 │ Priority │ Status      │ Progress │
+# ├──────────┼───────────────────────┼──────────┼─────────────┼──────────┤
+# │ US-001   │ User Authentication   │ P1       │ ✅ Complete │ 10/10    │
+# │ US-002   │ Profile Management    │ P1       │ ✅ Complete │ 8/8      │
+# │ US-003   │ Access Control        │ P2       │ ✅ Complete │ 12/12    │
+# │ US-004   │ Activity Tracking     │ P2       │ 🔄 Progress │ 4/6      │
+# │ US-005   │ Admin Dashboard       │ P3       │ ⏳ Ready    │ 0/9      │
+# └──────────┴───────────────────────┴──────────┴─────────────┴──────────┘
+#
+# 📈 Metrics:
+# • Stories: 3/5 complete (60%)
+# • Tasks: 34/45 complete (75.6%)
+# • Estimated time: 90h total, 68h spent
+# • Velocity: 1.2 stories/week
+# • Estimated completion: 2025-10-15
+#
+# ⚠️ Risks & Blockers:
+# • US-004 behind schedule (50% over estimate)
+# • US-005 blocked by US-004 completion
+#
+# 🎯 Next Actions:
+# 1. Focus on completing US-004 (2 tasks remaining)
+# 2. Review US-004 for technical debt
+# 3. Prepare US-005 for implementation (review dependencies)
+```
+
+**When to check status:**
+- Daily standups: Quick `/speckit.status` overview
+- Weekly reviews: Generate full report with `--save`
+- Before story transitions: Verify dependencies complete
+- When estimates feel off: Check velocity and adjust
 
 ---
 
-## 🔍 Troubleshooting
+### 3. Update Spec Kit Version
 
-### Git Credential Manager on Linux
+Keep Spec Kit up-to-date with latest features and improvements:
 
-If you're having issues with Git authentication on Linux, you can install Git Credential Manager:
+#### Check Current Version
 
 ```bash
-#!/usr/bin/env bash
-set -e
-echo "Downloading Git Credential Manager v2.6.1..."
-wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.6.1/gcm-linux_amd64.2.6.1.deb
-echo "Installing Git Credential Manager..."
-sudo dpkg -i gcm-linux_amd64.2.6.1.deb
-echo "Configuring Git to use GCM..."
-git config --global credential.helper manager
-echo "Cleaning up..."
-rm gcm-linux_amd64.2.6.1.deb
+# Check installed version
+uv tool list | grep specify-cli
+
+# Example output:
+# specify-cli v0.1.0 (from git+https://github.com/libs-factory/riso-spec-kit.git@main)
 ```
 
-## 👥 Maintainers
+#### Update to Latest Version
 
-- Den Delimarsky ([@localden](https://github.com/localden))
-- John Lam ([@jflam](https://github.com/jflam))
+**Method 1: Using uv tool upgrade (Recommended)**
 
-## 💬 Support
+```bash
+# Upgrade to latest version from main branch
+uv tool upgrade specify-cli --from git+https://github.com/libs-factory/riso-spec-kit.git
 
-For support, please open a [GitHub issue](https://github.com/github/spec-kit/issues/new). We welcome bug reports, feature requests, and questions about using Spec-Driven Development.
+# Verify upgrade
+uv tool list | grep specify-cli
+```
 
-## 🙏 Acknowledgements
+**Method 2: Reinstall from scratch**
 
-This project is heavily influenced by and based on the work and research of [John Lam](https://github.com/jflam).
+```bash
+# Uninstall current version
+uv tool uninstall specify-cli
 
-## 📄 License
+# Install latest version
+uv tool install specify-cli --from git+https://github.com/libs-factory/riso-spec-kit.git
 
-This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) file for the full terms.
+# Verify installation
+uv tool list | grep specify-cli
+```
+
+#### Update Project Templates
+
+After upgrading Spec Kit, manually update your project's templates:
+
+```bash
+# Navigate to project directory
+cd /path/to/your/project
+
+# Backup existing templates (optional but recommended)
+cp -r .specify/templates .specify/templates.backup
+
+# Clone or download latest spec kit
+cd /tmp
+git clone https://github.com/libs-factory/riso-spec-kit.git
+
+# Copy updated templates to your project
+cp -r riso-spec-kit/templates/* /path/to/your/project/.specify/templates/
+
+# Verify update
+ls -la /path/to/your/project/.specify/templates/
+
+# Review changelog for breaking changes
+# https://github.com/libs-factory/riso-spec-kit/blob/main/CHANGELOG.md
+```
+
+**Alternative: Re-initialize templates**
+
+```bash
+# Navigate to your project
+cd /path/to/your/project
+
+# Backup current .specify directory
+mv .specify .specify.backup
+
+# Re-initialize (will prompt for AI agent selection)
+specify init --here
+
+# Restore your customized files
+cp .specify.backup/memory/constitution.md .specify/memory/
+cp .specify.backup/memory/project-context.md .specify/memory/
+cp .specify.backup/memory/technical-context.md .specify/memory/
+
+# Copy back any custom specs
+cp -r .specify.backup/specs/* .specify/specs/ 2>/dev/null || true
+
+# Remove backup after verification
+rm -rf .specify.backup
+```
+
+---
