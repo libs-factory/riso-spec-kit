@@ -14,6 +14,12 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 You are upgrading the project constitution to use the tiered RisoTech structure or migrating between constitution formats. This command transforms a flat constitution into a structured, tiered one with CORE, HIGH-PRIORITY, and FLEXIBLE rules.
 
+## MANDATORY COMPLIANCE REQUIREMENTS
+
+**ABSOLUTE PROCESS ADHERENCE**: Do NOT assume or independently decide to change the process. All steps in "execution flow" below must be executed completely and in the exact order specified.
+
+**MANDATORY TODO LIST**: Before starting execution, AI MUST create a TODO list based on the items in "execution flow" to ensure no step is missed.
+
 Follow this execution flow:
 
 ### 1. Assess Current Constitution

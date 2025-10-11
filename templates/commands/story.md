@@ -15,6 +15,12 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Outline
 
+## MANDATORY COMPLIANCE REQUIREMENTS
+
+**ABSOLUTE PROCESS ADHERENCE**: Do NOT assume or independently decide to change the process. All steps in "Outline" below must be executed completely and in the exact order specified.
+
+**MANDATORY TODO LIST**: Before starting execution, AI MUST create a TODO list based on the items in "Outline" to ensure no step is missed.
+
 1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON output for FEATURE_DIR, BACKLOG_FILE, STORY_ID (if provided). All paths must be absolute.
 
 2. **Parse command arguments** from user input:

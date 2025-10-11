@@ -19,6 +19,12 @@ Goal: Detect and reduce ambiguity or missing decision points in the active featu
 
 Note: This clarification workflow is expected to run (and be completed) BEFORE invoking `/speckit.plan`. If the user explicitly states they are skipping clarification (e.g., exploratory spike), you may proceed, but must warn that downstream rework risk increases.
 
+## MANDATORY COMPLIANCE REQUIREMENTS
+
+**ABSOLUTE PROCESS ADHERENCE**: Do NOT assume or independently decide to change the process. All steps in "Execution steps" below must be executed completely and in the exact order specified.
+
+**MANDATORY TODO LIST**: Before starting execution, AI MUST create a TODO list based on the items in "Execution steps" to ensure no step is missed.
+
 Execution steps:
 
 1. Run `{SCRIPT}` from repo root **once** (combined `--json --paths-only` mode / `-Json -PathsOnly`). Parse minimal JSON payload fields:
