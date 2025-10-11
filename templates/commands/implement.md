@@ -13,7 +13,13 @@ $ARGUMENTS
 
 You **MUST** consider the user input before proceeding (if not empty).
 
-## Outline
+## MANDATORY COMPLIANCE REQUIREMENTS
+
+**ABSOLUTE PROCESS ADHERENCE**: Do NOT assume or independently decide to change the process. All steps in "execution flow" below must be executed completely and in the exact order specified.
+
+**MANDATORY TODO LIST**: Before starting execution, AI MUST create a TODO list based on the items in "execution flow" to ensure no step is missed.
+
+## Follow this execution flow:
 
 1. Run `{SCRIPT}` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute.
 
@@ -56,7 +62,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Calculate overall status:
      * **PASS**: All checklists have 0 incomplete items
      * **FAIL**: One or more checklists have incomplete items
-   
+
    - **If any checklist is incomplete**:
      * Display the table with incomplete item counts
      * **STOP** and ask: "Some checklists are incomplete. Do you want to proceed with implementation anyway? (yes/no)"

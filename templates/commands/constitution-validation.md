@@ -14,7 +14,13 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 You are validating development artifacts against the project constitution. This command ensures that specifications, plans, and tasks comply with established governance principles.
 
-Follow this execution flow:
+## MANDATORY COMPLIANCE REQUIREMENTS
+
+**ABSOLUTE PROCESS ADHERENCE**: Do NOT assume or independently decide to change the process. All steps in "execution flow" below must be executed completely and in the exact order specified.
+
+**MANDATORY TODO LIST**: Before starting execution, AI MUST create a TODO list based on the items in "execution flow" to ensure no step is missed.
+
+## Follow this execution flow:
 
 ### 1. Load Constitution
 
