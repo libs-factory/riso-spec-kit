@@ -30,7 +30,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    a. Parse user input for `--story US-###` argument
 
    b. **If `--story US-###` provided**:
-      - Load story from backlog.json (if exists)
+      - Load story from `FEATURE_DIR/stories/backlog.json` (if exists)
       - Verify story status is READY or IN_PROGRESS
       - If status is DRAFT or BLOCKED → ERROR with details
       - Check story dependencies are complete
