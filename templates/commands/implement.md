@@ -75,20 +75,29 @@ You **MUST** consider the user input before proceeding (if not empty).
      * Automatically proceed to step 4
 
 4. Load and analyze the implementation context:
-   - **REQUIRED**: Read tasks.md for the complete task list and execution plan
+
+   **Load tasks file** (path depends on mode):
+   - **IF SINGLE-STORY MODE (EPIC)**: Read `$FEATURE_DIR/tasks-US-###.md` (story-specific tasks)
+   - **IF MULTI-STORY MODE or NON-EPIC**: Read `$FEATURE_DIR/tasks.md` (master task list)
+   - Determine which file to read based on:
+     * Check if `--story US-###` argument provided AND epic-breakdown.md exists
+     * If yes: use `tasks-US-###.md`
+     * Otherwise: use `tasks.md`
+
+   **Load other context**:
    - **REQUIRED**: Read plan.md for tech stack, architecture, and file structure
    - **IF EXISTS**: Read data-model.md for entities and relationships
    - **IF EXISTS**: Read contracts/ for API specifications and test requirements
    - **IF EXISTS**: Read research.md for technical decisions and constraints
    - **IF EXISTS**: Read quickstart.md for integration scenarios
 
-4. Parse tasks.md structure and extract:
+5. Parse tasks file structure and extract:
    - **Task phases**: Setup, Tests, Core, Integration, Polish
    - **Task dependencies**: Sequential vs parallel execution rules
    - **Task details**: ID, description, file paths, parallel markers [P]
    - **Execution flow**: Order and dependency requirements
 
-5. **Constitution Gate Check** (RisoTech Enhancement):
+6. **Constitution Gate Check** (RisoTech Enhancement):
 
    If `SPECIFY_RISOTECH_MODE=true` or `SPECIFY_TIERED_CONSTITUTION=true`:
 
@@ -103,13 +112,13 @@ You **MUST** consider the user input before proceeding (if not empty).
       - If user says "yes", halt and suggest fixes
       - If user says "no", document violations and proceed with warning
 
-   c. If validation passes or user approves, continue to step 6
+   c. If validation passes or user approves, continue to step 7
 
-6. Execute implementation following the task plan:
+7. Execute implementation following the task plan:
 
-   **IF SINGLE-STORY MODE** (`--story US-###`):
+   **IF SINGLE-STORY MODE** (`--story US-###` in EPIC mode):
    - Execute only tasks for the specified story
-   - Follow story-specific task order from tasks.md
+   - Follow story-specific task order from tasks-US-###.md
    - After each task completion:
      * Update story progress in backlog.json
      * Increment completed_tasks count

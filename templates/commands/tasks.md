@@ -125,7 +125,21 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Validate task completeness (each user story has all needed tasks, independently testable)
    - **EPIC Integration**: If epic-breakdown.md exists, reference story IDs and follow story-based organization
 
-5. **Generate tasks.md**: Use `.specify/templates/tasks-template.md` as structure, fill with:
+5. **Generate tasks.md**: Use `.specify.specify/templates/tasks-template.md` as structure, fill with:
+
+   **CRITICAL - OUTPUT PATH LOGIC**:
+
+   **IF NOT EPIC MODE** (no epic-breakdown.md exists):
+   - **Output to**: `$FEATURE_DIR/tasks.md`
+   - Single file contains all tasks organized by user story phases
+
+   **IF EPIC MODE** (epic-breakdown.md exists):
+   - **Single-story mode** (`--story US-###` provided):
+     * **Output to**: `$FEATURE_DIR/tasks-US-###.md` (e.g., tasks-US-001.md)
+     * One file per story for independent tracking and implementation
+   - **Multi-story mode** (no `--story` argument):
+     * **Output to**: `$FEATURE_DIR/tasks.md`
+     * Master file with all stories, organized by phases
 
    **IF SINGLE-STORY MODE** (`--story US-###` provided in EPIC mode):
    - Feature name + story title header
@@ -133,6 +147,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Story-specific tasks only (setup, tests, implementation, validation)
    - Numbered tasks scoped to this story (T001, T002...)
    - Story completion checklist
+   - **Output to**: `$FEATURE_DIR/tasks-US-###.md`
 
    **IF MULTI-STORY MODE** (standard or EPIC with all stories):
    - Correct feature name from plan.md
@@ -149,18 +164,20 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Dependencies section showing story completion order
    - Parallel execution examples per story
    - Implementation strategy section (MVP first, incremental delivery)
+   - **Output to**: `$FEATURE_DIR/tasks.md`
 
 6. **Update story backlog** (if EPIC mode with backlog.json):
    - If `FEATURE_DIR/stories/backlog.json` exists:
      * Load backlog
-     * Update story with tasks.md path reference
+     * Update story with tasks file path reference (tasks-US-###.md for single-story)
      * Update estimated_tasks count for the story
      * Set status to READY (if was DRAFT)
      * Save backlog
 
-7. **Report**: Output path to generated tasks.md and summary:
+7. **Report**: Output path to generated tasks file and summary:
 
-   **IF SINGLE-STORY MODE:**
+   **IF SINGLE-STORY MODE (EPIC):**
+   - **Output file**: `$FEATURE_DIR/tasks-US-###.md`
    - Story ID and title
    - Total task count for this story
    - Estimated hours for this story
@@ -169,6 +186,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Next step: `/speckit.implement --story US-###`
 
    **IF MULTI-STORY MODE:**
+   - **Output file**: `$FEATURE_DIR/tasks.md` (master file for all stories)
    - Total task count
    - Task count per user story
    - Parallel opportunities identified
